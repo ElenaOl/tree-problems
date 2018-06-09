@@ -61,9 +61,6 @@ class ListNode {
     root.left = fromListToTree(head, countTillMiddle);
     root.right = fromListToTree(right, (count - (countTillMiddle +1)));
     
-    
-    
-    
     return root;
   }
   
