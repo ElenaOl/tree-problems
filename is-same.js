@@ -34,8 +34,7 @@ class TreeNode {
       var right = isSameTree(p.right, q.right);
       if(left && right){
         return true;
-      }else{
-        return false;
       }
+      return false;
   };
   isSameTree(p, q);

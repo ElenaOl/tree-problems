@@ -37,3 +37,26 @@ function isBalanced (root){
 }
 var balance = isBalanced(root);
 console.log(balance);
+
+
+function maxMinHeight (root){
+  if(root === null){
+    return {min:0, max:0};
+  }
+  var left = maxMinHeight(root.left);
+  var right = maxMinHeight(root.right);
+  var max = Math.max (left.max, right.max) + 1;
+  var min = Math.min (left.min, right.min) + 1;
+  return {min:min, max:max};
+}
+
+function isBalanced (root){
+  var left = maxMinHeight (root.left); //{max,min}
+  var right = maxMinHeight (root.right); //{max,min}
+  if(Math.abs(left.max - right.min) <=1 && 
+  Math.abs(right.max - left.min) <=1){
+    return true;
+  } 
+  return false;
+}
+isBalanced (root);
