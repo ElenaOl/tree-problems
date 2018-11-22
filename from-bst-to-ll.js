@@ -46,3 +46,34 @@ var result = fromBstToList (root);
 console.log(result)
 
 
+function fromBstToList (root){
+ if(root === null){
+   return null;
+ }
+    var head = new ListNode(root.value);
+    var current = head;
+    
+   
+ 
+ var left = fromBstToList (root.left);
+ var right = fromBstToList (root.right);
+ if(left !== null){
+   current.next = left;
+   current.next.previous = current;
+ }
+  
+ 
+ if(right !== null){
+   while(current.next !== null){
+      current = current.next;
+   }
+   current.next = right;
+   current.next.previous = current;
+ }
+  return head;
+}
+
+fromBstToList (root);
+
+
+
