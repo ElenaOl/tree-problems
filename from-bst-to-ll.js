@@ -96,6 +96,35 @@ function fromBstToList (root){
   return current;
 }
 
-fromBstToList (root);
+
+
+
+function fromBstToList (root){
+ if(root === null){
+   return null;
+ }
+ var current = new ListNode(root.value);
+ var left = fromBstToList (root.left);
+ var right = fromBstToList (root.right);
+ current.next = right;
+ if(right !== null){
+   right.previous = current;
+ }
+ 
+
+ if(left !== null){
+   var currLeft = left;
+   while(currLeft.next !== null){
+     currLeft = currLeft.next;
+   }
+   currLeft.next = current; 
+   current.previous = left;  
+   return left;
+ }
+
+  return current;
+}
+
+
 
 
